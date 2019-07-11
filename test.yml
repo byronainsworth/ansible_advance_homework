@@ -1,0 +1,8 @@
+- hosts: localhost
+  tasks:
+  - debug: var=item.0
+    with_subelements:
+      - "{{osp_servers}}"
+      - meta
+
+    
