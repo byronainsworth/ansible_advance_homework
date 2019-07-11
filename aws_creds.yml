@@ -4,14 +4,24 @@
 
   tasks:
 
-  - name: Install required packages 
-    yum: 
-     name: "{{item}}"
-     state: latest 
-    loop: 
-      - python 
-      - python-pip 
-      - python-devel 
+#  - name: Install required packages 
+#    yum: 
+#     name: "{{item}}"
+#     state: latest 
+#    loop: 
+#      - python 
+#      - python-pip 
+#      - python-devel 
+#      - gcc
+
+  - name: Install required packages
+    package:
+      name: "{{item}}"
+      state: latest
+    with_items:
+      - python
+      - python-pip
+      - python-devel
       - gcc
 
   - name: Install tower-cli
