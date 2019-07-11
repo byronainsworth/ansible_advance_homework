@@ -17,3 +17,8 @@
    - enable "{{ frontends_package }}" service
    - restart "{{ frontends_package }}" service
 
+- name: start "{{ frontends_package }}" service
+  service:
+    name: "{{ frontends_package }}"
+    enabled: yes
+    state: started
