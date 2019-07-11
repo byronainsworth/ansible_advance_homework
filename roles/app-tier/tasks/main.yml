@@ -1,2 +1,24 @@
 ---
 # tasks file for app-tier
+
+- name: install "{{ apps_package }}"
+  package:
+    name: "{{ apps_package }}"
+    state: latest
+  notify:
+   - enable "{{ apps_package }}" service
+   - restart "{{ apps_package }}" service
+
+- name: config create ansible "{{ apps_package }}" directory
+  file:
+    path: "{{ apps_basedir }}"
+    state: directory
+
+- name: config copy static index.html to "{{ apps_package }}" webapps/ROOT/index.html
+  template:
+    src: index.html.j2
+    dest: "{{ apps_basedir }}/index.html"
+    mode: 0644
+  notify:
+   - enable "{{ apps_package }}" service
+   - restart "{{ apps_package }}" service

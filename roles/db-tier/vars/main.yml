@@ -1,2 +1,5 @@
 ---
 # vars file for db-tier
+
+appdbs_package: postgresql-server
+appdbs_service: postgres
