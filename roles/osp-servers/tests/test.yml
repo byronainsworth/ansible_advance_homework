@@ -1,5 +1,5 @@
----
-- hosts: localhost
-  remote_user: root
-  roles:
-    - osp.servers
+  - name: Debug public_v4
+    debug:
+      var: item
+    with_items:
+      - "{{ result.ansible_facts.openstack_servers }}"
