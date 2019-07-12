@@ -22,3 +22,9 @@
   notify:
    - enable "{{ apps_package }}" service
    - restart "{{ apps_package }}" service
+
+- name: start and enable "{{ apps_package }}" service
+  service:
+    name: "{{ apps_package }}"
+    enabled: yes
+    state: started

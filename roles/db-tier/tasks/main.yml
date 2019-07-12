@@ -21,3 +21,9 @@
   notify:
     - enable "{{ appdbs_service }}" service
     - restart "{{ appdbs_service }}" service
+
+- name: start and enable "{{ appdbs_service }}" service
+  service:
+    name: "{{ appdbs_service }}ql"
+    enabled: yes
+    state: started
